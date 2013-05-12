@@ -2,7 +2,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
-    android:background="@drawable/main_bg"
+    android:background="@drawable/untitled"
     android:baselineAligned="false"
     android:orientation="vertical"
     android:padding="@dimen/activity_horizontal_margin"
@@ -13,76 +13,62 @@
     tools:context=".MenuActivity" >
 
     <LinearLayout
-        android:layout_width="310dp"
-        android:layout_height="160dp"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
         android:gravity="center_horizontal"
         android:orientation="horizontal" >
 
-        <ImageButton
-            style="@style/MainMenuButton"
+        <Button
             android:id="@+id/ibNews"
-            
-            android:layout_height="fill_parent"
-            android:layout_marginRight="20dp"
-            android:layout_weight="0.5"
-            android:adjustViewBounds="@bool/no"
-            android:alpha="0.8"
+            style="@style/MainMenuButton"
             android:contentDescription="@string/menu_news_alternate"
-            android:fadingEdge="none"
-            android:padding="0dp"
-            android:scaleType="fitCenter"
-            android:src="@drawable/menu_item"
-            android:layout_marginBottom="20dp" />
+            android:text="@string/menu_news" />
 
-        <ImageButton
+        <Button
             android:id="@+id/ibParties"
-            android:layout_width="fill_parent"
-            android:layout_height="fill_parent"
-            android:layout_marginRight="20dp"
-            android:layout_weight="0.5"
-            android:adjustViewBounds="@bool/no"
-            android:alpha="0.8"
+            style="@style/MainMenuButton"
             android:contentDescription="@string/menu_parties_alternate"
-            android:fadingEdge="none"
-            android:padding="0dp"
-            android:scaleType="fitCenter"
-            android:src="@drawable/menu_item" 
-            android:layout_marginBottom="20dp"/>
+            android:src="@drawable/menu_item"
+            android:text="@string/menu_parties" />
     </LinearLayout>
 
     <LinearLayout
-        android:layout_width="310dp"
-        android:layout_height="140dp"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
         android:gravity="center_horizontal"
         android:orientation="horizontal" >
 
-        <ImageButton
+        <Button
             android:id="@+id/ibPictures"
-            android:layout_width="fill_parent"
-            android:layout_height="fill_parent"
-            android:layout_marginRight="20dp"
-            android:layout_weight="0.5"
-            android:adjustViewBounds="@bool/no"
-            android:alpha="0.8"
+            style="@style/MainMenuButton"
             android:contentDescription="@string/menu_pictures_alternate"
-            android:fadingEdge="none"
-            android:padding="0dp"
-            android:scaleType="fitCenter"
-            android:src="@drawable/menu_item" />
+            android:src="@drawable/menu_item"
+            android:text="@string/menu_pictures" />
 
-        <ImageButton
+        <Button
             android:id="@+id/ibArtists"
-            android:layout_width="fill_parent"
-            android:layout_height="fill_parent"
-            android:layout_marginRight="20dp"
-            android:layout_weight="0.5"
-            android:adjustViewBounds="@bool/no"
-            android:alpha="0.8"
+            style="@style/MainMenuButton"
             android:contentDescription="@string/menu_artists_alternate"
-            android:fadingEdge="none"
-            android:padding="0dp"
-            android:scaleType="fitCenter"
-            android:src="@drawable/menu_item" />
+            android:src="@drawable/menu_item"
+            android:text="@string/menu_artists" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical" >
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" >
+            <Button
+                style="@style/MainMenuButton_two" />
+            <Button
+                style="@style/MainMenuButton_two" />
+            <Button
+                style="@style/MainMenuButton_two"/>
+        </LinearLayout>
     </LinearLayout>
 
 </LinearLayout>

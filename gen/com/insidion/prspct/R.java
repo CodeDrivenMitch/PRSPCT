@@ -24,9 +24,12 @@ public final class R {
         public static final int activity_vertical_margin=0x7f050001;
     }
     public static final class drawable {
-        public static final int ic_launcher=0x7f020000;
-        public static final int main_bg=0x7f020001;
-        public static final int menu_item=0x7f020002;
+        public static final int bg_alt=0x7f020000;
+        public static final int ic_launcher=0x7f020001;
+        public static final int m=0x7f020002;
+        public static final int main_bg=0x7f020003;
+        public static final int menu_item=0x7f020004;
+        public static final int untitled=0x7f020005;
     }
     public static final class id {
         public static final int action_settings=0x7f090004;
@@ -45,9 +48,13 @@ public final class R {
         public static final int action_settings=0x7f060001;
         public static final int app_name=0x7f060000;
         public static final int hello_world=0x7f060002;
+        public static final int menu_artists=0x7f060008;
         public static final int menu_artists_alternate=0x7f060006;
+        public static final int menu_news=0x7f060007;
         public static final int menu_news_alternate=0x7f060003;
+        public static final int menu_parties=0x7f060009;
         public static final int menu_parties_alternate=0x7f060004;
+        public static final int menu_pictures=0x7f06000a;
         public static final int menu_pictures_alternate=0x7f060005;
     }
     public static final class style {
@@ -82,5 +89,6 @@ public final class R {
          */
         public static final int AppTheme=0x7f070001;
         public static final int MainMenuButton=0x7f070002;
+        public static final int MainMenuButton_two=0x7f070003;
     }
 }

@@ -16,8 +16,27 @@
     <style name="AppTheme" parent="AppBaseTheme">
         <!-- All customizations that are NOT specific to a particular API-level can go here. -->
     </style>
-	<style name="MainMenuButton" parent="AppBaseTheme">
-	    <item name="android:layout_width">fill_parent</item>
+	<style name="MainMenuButton" >
+	    <item name="android:layout_width">100dp</item>
+	    <item name="android:layout_height">100dp</item>
+	    <item name="android:layout_margin">15dp</item>
+	    <item name="android:padding">0dp</item>
+	    <item name="android:layout_weight">1</item>
+	    <item name="android:alpha">1</item>
+	    <item name="android:scaleType">fitXY</item>
+	    <item name="android:background">@drawable/m</item>
+	    <item name="android:adjustViewBounds">false</item>
+	</style>
+	<style name="MainMenuButton_two" >
+	    <item name="android:layout_width">30dp</item>
+	    <item name="android:layout_height">30dp</item>
+	    <item name="android:layout_margin">15dp</item>
+	    <item name="android:padding">0dp</item>
+	    <item name="android:layout_weight">1</item>
+	    <item name="android:alpha">1</item>
+	    <item name="android:scaleType">fitXY</item>
+	    <item name="android:background">@drawable/m</item>
+	    <item name="android:adjustViewBounds">false</item>
 	</style>
 
 </resources>

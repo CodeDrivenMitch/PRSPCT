@@ -8,5 +8,9 @@
     <string name="menu_parties_alternate">Parties </string>
     <string name="menu_pictures_alternate">Pictures </string>
     <string name="menu_artists_alternate">Artists </string>
+    <string name="menu_news">News</string>
+    <string name="menu_artists">Artists</string>
+    <string name="menu_parties">Events</string>
+    <string name="menu_pictures">Pictures</string>
 
 </resources>
