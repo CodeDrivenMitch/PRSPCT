@@ -4,5 +4,9 @@
     <string name="app_name">PRSPCT</string>
     <string name="action_settings">Settings</string>
     <string name="hello_world">Hello world!</string>
+    <string name="menu_news_alternate">News </string>
+    <string name="menu_parties_alternate">Parties </string>
+    <string name="menu_pictures_alternate">Pictures </string>
+    <string name="menu_artists_alternate">Artists </string>
 
 </resources>
