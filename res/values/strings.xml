@@ -8,9 +8,20 @@
     <string name="menu_parties_alternate">Parties </string>
     <string name="menu_pictures_alternate">Pictures </string>
     <string name="menu_artists_alternate">Artists </string>
-    <string name="menu_news">News</string>
-    <string name="menu_artists">Artists</string>
-    <string name="menu_parties">Events</string>
-    <string name="menu_pictures">Pictures</string>
+    <string name="menu_news">News and Releases</string>
+    <string name="menu_artists">Artists \n and sounds</string>
+    <string name="menu_parties">Upcoming \nEvents</string>
+    <string name="menu_pictures">Party \nPictures</string>
+    <string name="info_button_alternate">Info</string>
+
+    <!-- Activity Screen Titles -->
+    <string name="title_activity_news">News and Releases</string>
+    <string name="title_activity_event">Events</string>
+    <string name="title_activity_artists">Artists</string>
+    <string name="title_activity_pictures">Pictures</string>
+    <string name="title_activity_splash">SplashActivity</string>
+    <string name="logo_desc">The PRSPCT Logo</string>
+    <string name="loading">Loading...</string>
+    <string name="LoadingDesc">Loading icon</string>
 
 </resources>

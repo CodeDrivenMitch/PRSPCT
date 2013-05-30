@@ -24,30 +24,57 @@ public final class R {
         public static final int activity_vertical_margin=0x7f050001;
     }
     public static final class drawable {
-        public static final int bg_alt=0x7f020000;
-        public static final int ic_launcher=0x7f020001;
-        public static final int m=0x7f020002;
-        public static final int main_bg=0x7f020003;
-        public static final int menu_item=0x7f020004;
-        public static final int untitled=0x7f020005;
+        public static final int bg_1=0x7f020000;
+        public static final int bg_2=0x7f020001;
+        public static final int bg_3=0x7f020002;
+        public static final int bg_alt=0x7f020003;
+        public static final int ic_launcher=0x7f020004;
+        public static final int m=0x7f020005;
+        public static final int main_bg=0x7f020006;
+        public static final int menu_item=0x7f020007;
+        public static final int prpsct_logo_w=0x7f020008;
+        public static final int prspct_logo=0x7f020009;
     }
     public static final class id {
-        public static final int action_settings=0x7f090004;
-        public static final int ibArtists=0x7f090003;
-        public static final int ibNews=0x7f090000;
-        public static final int ibParties=0x7f090001;
-        public static final int ibPictures=0x7f090002;
+        public static final int action_settings=0x7f09000d;
+        public static final int bArtists=0x7f090005;
+        public static final int bEvents=0x7f090003;
+        public static final int bNews=0x7f090002;
+        public static final int bPictures=0x7f090004;
+        public static final int imageView1=0x7f09000c;
+        public static final int info_button=0x7f090007;
+        public static final int ivNewsLoading=0x7f09000b;
+        public static final int prspct_logo=0x7f090001;
+        public static final int relativeLayout1=0x7f090009;
+        public static final int rlBg=0x7f090000;
+        public static final int settings_button=0x7f090006;
+        public static final int share_button=0x7f090008;
+        public static final int tvNewsLoading=0x7f09000a;
     }
     public static final class layout {
-        public static final int activity_menu=0x7f030000;
+        public static final int activity_artists=0x7f030000;
+        public static final int activity_event=0x7f030001;
+        public static final int activity_menu=0x7f030002;
+        public static final int activity_news=0x7f030003;
+        public static final int activity_pictures=0x7f030004;
+        public static final int activity_splash=0x7f030005;
     }
     public static final class menu {
-        public static final int menu=0x7f080000;
+        public static final int artists=0x7f080000;
+        public static final int event=0x7f080001;
+        public static final int menu=0x7f080002;
+        public static final int news=0x7f080003;
+        public static final int pictures=0x7f080004;
+        public static final int splash=0x7f080005;
     }
     public static final class string {
+        public static final int LoadingDesc=0x7f060013;
         public static final int action_settings=0x7f060001;
         public static final int app_name=0x7f060000;
         public static final int hello_world=0x7f060002;
+        public static final int info_button_alternate=0x7f06000b;
+        public static final int loading=0x7f060012;
+        public static final int logo_desc=0x7f060011;
         public static final int menu_artists=0x7f060008;
         public static final int menu_artists_alternate=0x7f060006;
         public static final int menu_news=0x7f060007;
@@ -56,6 +83,13 @@ public final class R {
         public static final int menu_parties_alternate=0x7f060004;
         public static final int menu_pictures=0x7f06000a;
         public static final int menu_pictures_alternate=0x7f060005;
+        public static final int title_activity_artists=0x7f06000e;
+        public static final int title_activity_event=0x7f06000d;
+        /**  Activity Screen Titles 
+         */
+        public static final int title_activity_news=0x7f06000c;
+        public static final int title_activity_pictures=0x7f06000f;
+        public static final int title_activity_splash=0x7f060010;
     }
     public static final class style {
         /** 

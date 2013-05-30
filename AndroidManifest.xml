@@ -14,14 +14,59 @@
         android:label="@string/app_name"
         android:theme="@style/AppTheme" >
         <activity
+            android:name="com.insidion.prspct.SplashActivity"
+            android:label="@string/app_name" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity
             android:name="com.insidion.prspct.MenuActivity"
             android:label="@string/app_name" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
-                <category android:name="android.intent.category.LAUNCHER" />
+                <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
         </activity>
+        <activity
+            android:name="com.insidion.prspct.NewsActivity"
+            android:label="@string/title_activity_news" >
+            <intent-filter>
+                <action android:name="android.intent.action.NEWS" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name="com.insidion.prspct.EventActivity"
+            android:label="@string/title_activity_event" >
+            <intent-filter>
+                <action android:name="android.intent.action.EVENTS" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name="com.insidion.prspct.Artists"
+            android:label="@string/title_activity_artists" >
+            <intent-filter>
+                <action android:name="android.intent.action.ARTISTS" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name="com.insidion.prspct.PicturesActivity"
+            android:label="@string/title_activity_pictures" >
+            <intent-filter>
+                <action android:name="android.intent.action.PICTURES" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+        
     </application>
 
 </manifest>
