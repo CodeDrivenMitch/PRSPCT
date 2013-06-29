@@ -20,6 +20,8 @@ public class NewsItem {
 		this.icon_URL = icon_URL;
 		this.featured_URL = featured_URL;
 	}
+	
+	public NewsItem(){}
 
 	public long getId() {
 		return id;
