@@ -2,22 +2,36 @@ package com.insidion.prspct;
 
 import java.io.BufferedReader;
 import java.io.IOException;
+import java.io.InputStream;
 import java.io.InputStreamReader;
-import java.net.URI;
+import java.util.List;
 
+import org.apache.http.HttpEntity;
 import org.apache.http.HttpResponse;
+import org.apache.http.StatusLine;
+import org.apache.http.client.ClientProtocolException;
 import org.apache.http.client.HttpClient;
 import org.apache.http.client.methods.HttpGet;
 import org.apache.http.impl.client.DefaultHttpClient;
+import org.json.JSONArray;
+import org.json.JSONException;
 
-import android.app.Activity;
+import android.app.ListActivity;
 import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.ArrayAdapter;
+import android.widget.Button;
+import android.widget.Toast;
 
-public class NewsActivity extends Activity {
+public class NewsActivity extends ListActivity implements OnClickListener {
+
+	private NewsItemDatasource DAO;
+	private Button button;
 
 	/*
 	 * Return button in title bar
@@ -42,8 +56,14 @@ public class NewsActivity extends Activity {
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_news);
-		getActionBar().setDisplayHomeAsUpEnabled(true);
-		setLoadingBar();
+		
+		DAO = new NewsItemDatasource(this);
+		DAO.open();
+		
+		this.refreshArrayAdapter();
+
+		button = (Button) findViewById(R.id.button1);
+		button.setOnClickListener(this);
 	}
 
 	@Override
@@ -52,70 +72,31 @@ public class NewsActivity extends Activity {
 		getMenuInflater().inflate(R.menu.news, menu);
 		return true;
 	}
-	private void setLoadingBar() {
-		
-	}
-	
+
 	public void onJSONLoadComplete(String JSONString) {
-		
+
 	}
-
-}
-
-class getJSONString extends AsyncTask<URI, Void, String> {
-	
-	
-	private NewsActivity act;
-	private URI JSONURL;
-	
- 	getJSONString(NewsActivity act, URI url) {
-		this.act = act;
-		this.JSONURL = url;
-	}
-
-	
 
 	@Override
-	protected String doInBackground(URI... params) {
-		BufferedReader in = null;
-		String JSON =  null;
-		try {
-			HttpClient client = new DefaultHttpClient();
-			HttpGet request = new HttpGet();
-			request.setURI(this.JSONURL);
-			HttpResponse response = client.execute(request);
-			in = new BufferedReader(new InputStreamReader(response.getEntity().getContent()));
-			StringBuffer sb = new StringBuffer("");
-			String l = "";
-			String nl = System.getProperty("line.separator");
-			while ((l = in.readLine()) != null) {
-				sb.append(l + nl);
-			}
-			in.close();
-			JSON = sb.toString();
-			
-		} catch (Exception e) {
-			e.printStackTrace();
-		} finally {
-			if(in != null) {
-				try {
-					in.close();
-				} catch (IOException e){
-					e.printStackTrace();
-				}
-			}
+	public void onClick(View arg0) {
+		if (arg0.getId() == R.id.button1) {
+			NewsItem i = new NewsItem();
+			i.setContent("This is mock content you badass.");
+			i.setTitle("Mocking bird title");
+			i.setDate(200);
+			i.setNid(1);
+			NewsItem item = DAO.createNewsItem(i);
+			if(item.hasDatabaseID()) this.refreshArrayAdapter();
 		}
-		return JSON;
 	}
-
-
-
-	@Override
-	protected void onPostExecute(String result) {
-		super.onPostExecute(result);
-		this.act.onJSONLoadComplete(result);
-	}
-
 	
+	private void refreshArrayAdapter()
+	{
+		List<NewsItem> values = DAO.getAllNewsItems();
 
+		ArrayAdapter<NewsItem> adapter = new ArrayAdapter<NewsItem>(this,
+				R.layout.newsitemlist, values);
+
+		setListAdapter(adapter);
+	}
 }

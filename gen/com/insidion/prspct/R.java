@@ -41,15 +41,15 @@ public final class R {
         public static final int bEvents=0x7f090003;
         public static final int bNews=0x7f090002;
         public static final int bPictures=0x7f090004;
-        public static final int imageView1=0x7f09000c;
+        public static final int bottomtext=0x7f09000c;
+        public static final int button1=0x7f090009;
+        public static final int imageView1=0x7f09000a;
         public static final int info_button=0x7f090007;
-        public static final int ivNewsLoading=0x7f09000b;
         public static final int prspct_logo=0x7f090001;
-        public static final int relativeLayout1=0x7f090009;
         public static final int rlBg=0x7f090000;
         public static final int settings_button=0x7f090006;
         public static final int share_button=0x7f090008;
-        public static final int tvNewsLoading=0x7f09000a;
+        public static final int toptext=0x7f09000b;
     }
     public static final class layout {
         public static final int activity_artists=0x7f030000;
@@ -58,6 +58,7 @@ public final class R {
         public static final int activity_news=0x7f030003;
         public static final int activity_pictures=0x7f030004;
         public static final int activity_splash=0x7f030005;
+        public static final int newsitemlist=0x7f030006;
     }
     public static final class menu {
         public static final int artists=0x7f080000;

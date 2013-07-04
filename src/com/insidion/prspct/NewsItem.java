@@ -10,18 +10,19 @@ public class NewsItem {
 	private String icon_URL = null;
 	private String featured_URL = null;
 	
-	public NewsItem(long id, long nid, String title, String content, long date, String icon_URL, String featured_URL)
+	public NewsItem(){}
+	
+	public boolean isValid()
 	{
-		this.id = id;
-		this.nid = nid;
-		this.title = title;
-		this.content = content;
-		this.date = date;
-		this.icon_URL = icon_URL;
-		this.featured_URL = featured_URL;
+		if(this.nid > 0 && this.date > 0 && title != null && content != null) return true;
+		return false;
 	}
 	
-	public NewsItem(){}
+	public boolean hasDatabaseID()
+	{
+		if(this.id > -1) return true;
+		return false;
+	}
 
 	public long getId() {
 		return id;
