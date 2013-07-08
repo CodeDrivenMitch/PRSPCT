@@ -1,32 +1,16 @@
 package com.insidion.prspct;
 
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.InputStreamReader;
 import java.util.List;
-
-import org.apache.http.HttpEntity;
-import org.apache.http.HttpResponse;
-import org.apache.http.StatusLine;
-import org.apache.http.client.ClientProtocolException;
-import org.apache.http.client.HttpClient;
-import org.apache.http.client.methods.HttpGet;
-import org.apache.http.impl.client.DefaultHttpClient;
-import org.json.JSONArray;
-import org.json.JSONException;
 
 import android.app.ListActivity;
 import android.content.Intent;
-import android.os.AsyncTask;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.View.OnClickListener;
-import android.widget.ArrayAdapter;
 import android.widget.Button;
-import android.widget.Toast;
+import android.widget.ListView;
 
 public class NewsActivity extends ListActivity implements OnClickListener {
 
@@ -56,11 +40,11 @@ public class NewsActivity extends ListActivity implements OnClickListener {
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_news);
-		
+
 		DAO = new NewsItemDatasource(this);
 		DAO.open();
-		
-		//this.refreshArrayAdapter();
+
+		this.refreshArrayAdapter();
 
 		button = (Button) findViewById(R.id.bCreateNI);
 		button.setOnClickListener(this);
@@ -80,17 +64,23 @@ public class NewsActivity extends ListActivity implements OnClickListener {
 	@Override
 	public void onClick(View arg0) {
 		if (arg0.getId() == R.id.bCreateNI) {
-			this.startActivity(new Intent(NewsActivity.this, NewNewsItemActivity.class));
+			this.startActivity(new Intent(NewsActivity.this,
+					NewNewsItemActivity.class));
 		}
 	}
-	
-	private void refreshArrayAdapter()
-	{
+
+	private void refreshArrayAdapter() {
 		List<NewsItem> values = DAO.getAllNewsItems();
 
-		ArrayAdapter<NewsItem> adapter = new ArrayAdapter<NewsItem>(this,
-				R.layout.newsitemlist, values);
+		NewsItemAdapter nia = new NewsItemAdapter(this,
+				R.layout.newsitem_listview_row, values);
+		ListView listView1 = (ListView) findViewById(android.R.id.list);
 
-		setListAdapter(adapter);
+		View header = (View) getLayoutInflater().inflate(
+				R.layout.newsitem_listview_header, null);
+		listView1.addHeaderView(header);
+
+		listView1.setAdapter(nia);
+
 	}
 }
