@@ -5,19 +5,15 @@ import java.util.List;
 import android.app.ListActivity;
 import android.content.Intent;
 import android.os.Bundle;
-import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-import android.view.View.OnClickListener;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
-import android.widget.Button;
 import android.widget.ListView;
 
-public class NewsActivity extends ListActivity implements OnClickListener {
+public class NewsActivity extends ListActivity {
 
 	private NewsItemDatasource DAO;
-	private Button button;
 
 	private ListView listview;
 	private NewsItemAdapter nia;
@@ -55,7 +51,7 @@ public class NewsActivity extends ListActivity implements OnClickListener {
 			@Override
 			public void onItemClick(AdapterView<?> parent, View view,
 					int position, long id) {
-				long did = nia.getItem(position - 1).getId();
+				long did = nia.getItem(position).getId();
 				Intent theintent = new Intent(NewsActivity.this,
 						SingleNewsItemActivity.class);
 				theintent.putExtra("item_id", did);
@@ -63,29 +59,13 @@ public class NewsActivity extends ListActivity implements OnClickListener {
 			}
 		});
 
+	}
+
+	@Override
+	protected void onResume() {
+		super.onResume();
+
 		this.refreshArrayAdapter();
-
-		button = (Button) findViewById(R.id.bCreateNI);
-		button.setOnClickListener(this);
-	}
-
-	@Override
-	public boolean onCreateOptionsMenu(Menu menu) {
-		// Inflate the menu; this adds items to the action bar if it is present.
-		getMenuInflater().inflate(R.menu.news, menu);
-		return true;
-	}
-
-	public void onJSONLoadComplete(String JSONString) {
-
-	}
-
-	@Override
-	public void onClick(View arg0) {
-		if (arg0.getId() == R.id.bCreateNI) {
-			this.startActivity(new Intent(NewsActivity.this,
-					NewNewsItemActivity.class));
-		}
 	}
 
 	private void refreshArrayAdapter() {
@@ -93,11 +73,6 @@ public class NewsActivity extends ListActivity implements OnClickListener {
 
 		this.nia = new NewsItemAdapter(this, R.layout.newsitem_listview_row,
 				values);
-
-		View header = (View) getLayoutInflater().inflate(
-				R.layout.newsitem_listview_header, null);
-		listview.addHeaderView(header);
-
 		listview.setAdapter(this.nia);
 
 	}
