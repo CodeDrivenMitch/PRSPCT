@@ -37,6 +37,17 @@ public class NewsItemDatasource {
 		database.delete(DatabaseHelper.TABLE_NEWSITEMS, DatabaseHelper.COL_ID
 				+ " = " + id, null);
 	}
+	
+	public NewsItem updateNewsItem(NewsItem updated)
+	{
+		if(updated.hasDatabaseID() && updated.isValid())
+		{
+			//TODO Update action database
+			
+			return null;
+		}
+		else return null;
+	}
 
 	public NewsItem createNewsItem(NewsItem newsitem) {
 		ContentValues values = new ContentValues();

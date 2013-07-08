@@ -60,9 +60,9 @@ public class NewsActivity extends ListActivity implements OnClickListener {
 		DAO = new NewsItemDatasource(this);
 		DAO.open();
 		
-		this.refreshArrayAdapter();
+		//this.refreshArrayAdapter();
 
-		button = (Button) findViewById(R.id.button1);
+		button = (Button) findViewById(R.id.bCreateNI);
 		button.setOnClickListener(this);
 	}
 
@@ -79,14 +79,8 @@ public class NewsActivity extends ListActivity implements OnClickListener {
 
 	@Override
 	public void onClick(View arg0) {
-		if (arg0.getId() == R.id.button1) {
-			NewsItem i = new NewsItem();
-			i.setContent("This is mock content you badass.");
-			i.setTitle("Mocking bird title");
-			i.setDate(200);
-			i.setNid(1);
-			NewsItem item = DAO.createNewsItem(i);
-			if(item.hasDatabaseID()) this.refreshArrayAdapter();
+		if (arg0.getId() == R.id.bCreateNI) {
+			this.startActivity(new Intent(NewsActivity.this, NewNewsItemActivity.class));
 		}
 	}
 	
