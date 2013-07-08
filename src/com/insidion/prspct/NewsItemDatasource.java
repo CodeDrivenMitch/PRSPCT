@@ -55,6 +55,15 @@ public class NewsItemDatasource {
 
 		return cursorToNewsItem(cursor);
 	}
+	
+	public boolean checkForNewsItem(long news_id)
+	{
+		Cursor cursor = database.query(DatabaseHelper.TABLE_NEWSITEMS,
+				allColumns, DatabaseHelper.COL_ITEM_ID + " = " + news_id, null, null,
+				null, null);
+		if(cursor.getCount() == 1) return true;
+		else return false;
+	}
 
 	public NewsItem createNewsItem(NewsItem newsitem) {
 		ContentValues values = new ContentValues();

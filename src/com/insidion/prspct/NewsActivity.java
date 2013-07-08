@@ -1,10 +1,28 @@
 package com.insidion.prspct;
 
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
+import java.util.Date;
 import java.util.List;
+
+import org.apache.http.HttpEntity;
+import org.apache.http.HttpResponse;
+import org.apache.http.StatusLine;
+import org.apache.http.client.ClientProtocolException;
+import org.apache.http.client.HttpClient;
+import org.apache.http.client.methods.HttpGet;
+import org.apache.http.impl.client.DefaultHttpClient;
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 import android.app.ListActivity;
 import android.content.Intent;
+import android.os.AsyncTask;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
@@ -66,6 +84,10 @@ public class NewsActivity extends ListActivity {
 		super.onResume();
 
 		this.refreshArrayAdapter();
+
+		NewsItemRetriever nir = new NewsItemRetriever();
+		nir.execute();
+
 	}
 
 	private void refreshArrayAdapter() {
@@ -75,5 +97,79 @@ public class NewsActivity extends ListActivity {
 				values);
 		listview.setAdapter(this.nia);
 
+	}
+
+	class NewsItemRetriever extends AsyncTask<Void, Void, JSONArray> {
+
+		@Override
+		protected JSONArray doInBackground(Void... params) {
+			JSONArray array = null;
+			try {
+				array = new JSONObject(readNewsFeed()).getJSONArray("item");
+				
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+			return array;
+		}
+
+		@Override
+		protected void onPostExecute(JSONArray result) {
+			super.onPostExecute(result);
+			
+			if(result == null) return;
+			
+			NewsItem ni = new NewsItem();
+			
+			for(int i = 0; i < result.length(); i++)
+			{
+				try {
+					Log.d("DBG_JSON", ""+result.get(i).toString());
+				
+					JSONObject Jasonobject = result.getJSONObject(i);
+					ni.setContent(Jasonobject.getString("content"));
+					ni.setTitle(Jasonobject.getString("title"));
+					ni.setNid(Jasonobject.getLong("n_id"));	
+					
+					//TODO : parse date
+					
+					ni.setDate((new Date()).getTime());
+					
+				} catch (JSONException e) {
+					
+				}
+			}
+			DAO.createNewsItem(ni);
+			refreshArrayAdapter();
+		}
+
+		public String readNewsFeed() {
+			StringBuilder builder = new StringBuilder();
+			HttpClient client = new DefaultHttpClient();
+			HttpGet httpGet = new HttpGet("http://insidion.com/prspct/news.php");
+			try {
+				HttpResponse response = client.execute(httpGet);
+				StatusLine statusLine = response.getStatusLine();
+				int statusCode = statusLine.getStatusCode();
+				if (statusCode == 200) {
+					HttpEntity entity = response.getEntity();
+					InputStream content = entity.getContent();
+					BufferedReader reader = new BufferedReader(
+							new InputStreamReader(content));
+					String line;
+					while ((line = reader.readLine()) != null) {
+						builder.append(line);
+					}
+				} else {
+					Log.e(NewsActivity.class.toString(),
+							"Failed to download file");
+				}
+			} catch (ClientProtocolException e) {
+				e.printStackTrace();
+			} catch (IOException e) {
+				e.printStackTrace();
+			}
+			return builder.toString();
+		}
 	}
 }
