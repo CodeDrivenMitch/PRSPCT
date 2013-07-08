@@ -9,6 +9,8 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.View.OnClickListener;
+import android.widget.AdapterView;
+import android.widget.AdapterView.OnItemClickListener;
 import android.widget.Button;
 import android.widget.ListView;
 
@@ -16,6 +18,9 @@ public class NewsActivity extends ListActivity implements OnClickListener {
 
 	private NewsItemDatasource DAO;
 	private Button button;
+
+	private ListView listview;
+	private NewsItemAdapter nia;
 
 	/*
 	 * Return button in title bar
@@ -43,6 +48,20 @@ public class NewsActivity extends ListActivity implements OnClickListener {
 
 		DAO = new NewsItemDatasource(this);
 		DAO.open();
+
+		this.listview = (ListView) findViewById(android.R.id.list);
+
+		listview.setOnItemClickListener(new OnItemClickListener() {
+			@Override
+			public void onItemClick(AdapterView<?> parent, View view,
+					int position, long id) {
+				long did = nia.getItem(position - 1).getId();
+				Intent theintent = new Intent(NewsActivity.this,
+						SingleNewsItemActivity.class);
+				theintent.putExtra("item_id", did);
+				startActivity(theintent);
+			}
+		});
 
 		this.refreshArrayAdapter();
 
@@ -72,15 +91,14 @@ public class NewsActivity extends ListActivity implements OnClickListener {
 	private void refreshArrayAdapter() {
 		List<NewsItem> values = DAO.getAllNewsItems();
 
-		NewsItemAdapter nia = new NewsItemAdapter(this,
-				R.layout.newsitem_listview_row, values);
-		ListView listView1 = (ListView) findViewById(android.R.id.list);
+		this.nia = new NewsItemAdapter(this, R.layout.newsitem_listview_row,
+				values);
 
 		View header = (View) getLayoutInflater().inflate(
 				R.layout.newsitem_listview_header, null);
-		listView1.addHeaderView(header);
+		listview.addHeaderView(header);
 
-		listView1.setAdapter(nia);
+		listview.setAdapter(this.nia);
 
 	}
 }

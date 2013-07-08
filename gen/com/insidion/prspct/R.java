@@ -63,9 +63,10 @@ public final class R {
         public static final int activity_new_news_item=0x7f030003;
         public static final int activity_news=0x7f030004;
         public static final int activity_pictures=0x7f030005;
-        public static final int activity_splash=0x7f030006;
-        public static final int newsitem_listview_header=0x7f030007;
-        public static final int newsitem_listview_row=0x7f030008;
+        public static final int activity_single_news_item=0x7f030006;
+        public static final int activity_splash=0x7f030007;
+        public static final int newsitem_listview_header=0x7f030008;
+        public static final int newsitem_listview_row=0x7f030009;
     }
     public static final class menu {
         public static final int artists=0x7f080000;
@@ -74,7 +75,8 @@ public final class R {
         public static final int new_news_item=0x7f080003;
         public static final int news=0x7f080004;
         public static final int pictures=0x7f080005;
-        public static final int splash=0x7f080006;
+        public static final int single_news_item=0x7f080006;
+        public static final int splash=0x7f080007;
     }
     public static final class string {
         public static final int LoadingDesc=0x7f060013;
@@ -99,6 +101,7 @@ public final class R {
          */
         public static final int title_activity_news=0x7f06000c;
         public static final int title_activity_pictures=0x7f06000f;
+        public static final int title_activity_single_news_item=0x7f060015;
         public static final int title_activity_splash=0x7f060010;
     }
     public static final class style {

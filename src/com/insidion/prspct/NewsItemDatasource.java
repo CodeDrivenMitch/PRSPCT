@@ -37,16 +37,23 @@ public class NewsItemDatasource {
 		database.delete(DatabaseHelper.TABLE_NEWSITEMS, DatabaseHelper.COL_ID
 				+ " = " + id, null);
 	}
-	
-	public NewsItem updateNewsItem(NewsItem updated)
-	{
-		if(updated.hasDatabaseID() && updated.isValid())
-		{
-			//TODO Update action database
-			
+
+	public NewsItem updateNewsItem(NewsItem updated) {
+		if (updated.hasDatabaseID() && updated.isValid()) {
+			// TODO Update action database
+
 			return null;
-		}
-		else return null;
+		} else
+			return null;
+	}
+
+	public NewsItem getSingleNewsItem(long id) {
+		Cursor cursor = database.query(DatabaseHelper.TABLE_NEWSITEMS,
+				allColumns, DatabaseHelper.COL_ID + " = " + id, null, null,
+				null, null);
+		cursor.moveToFirst();
+
+		return cursorToNewsItem(cursor);
 	}
 
 	public NewsItem createNewsItem(NewsItem newsitem) {
@@ -72,7 +79,8 @@ public class NewsItemDatasource {
 	public List<NewsItem> getAllNewsItems() {
 		List<NewsItem> newsitems = new ArrayList<NewsItem>();
 		Cursor cursor = database.query(DatabaseHelper.TABLE_NEWSITEMS,
-				allColumns, null, null, null, null, null);
+				allColumns, null, null, null, null, " "
+						+ DatabaseHelper.COL_DATE + " DESC ");
 		cursor.moveToFirst();
 		while (!cursor.isAfterLast()) {
 			NewsItem comment = cursorToNewsItem(cursor);

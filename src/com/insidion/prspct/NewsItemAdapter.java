@@ -26,6 +26,7 @@ public class NewsItemAdapter extends ArrayAdapter<NewsItem> {
 		this.context = context;
 
 		this.items = objects;
+		
 	}
 
 	@Override
